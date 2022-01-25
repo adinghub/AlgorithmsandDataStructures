@@ -2,7 +2,7 @@ package LinearSearch;
 
 /**
  * @author Qidong Ding
- * @description TODO： 线性查找指按一定的顺序检查数组中每一个元素，直到找到所要寻找的特定值为止。
+ * @description TODO： 线性查找指按一定的顺序检查数组中每一个元素，直到找到所要寻找的特定值或检查完数组为止。
  * @date 2022-01-25-19:56
  * @since JDK 1.8
  */
