@@ -9,6 +9,11 @@ package LinearSearch;
 
 public class LinearSearch {
 
+    // 构造方法私有化
+    private LinearSearch() {
+
+    }
+
     /**
      * 线性查找实现方法
      * @param data 被查找的数据
@@ -25,24 +30,41 @@ public class LinearSearch {
     }
     
     public static void main(String[] args) {
-        // 定义数组
-        Integer[] data = {28, 18, 12, 9, 16, 66, 32, 4};
+//        // 定义数组
+//        Integer[] data = {28, 18, 12, 9, 16, 66, 32, 4};
+//
+//        // 查找到的情况
+//        int result = LinearSearch.search(data, 16);
+//        System.out.println(result);
+//
+//        // 未查到的情况
+//        int result1 = LinearSearch.search(data, 25);
+//        System.out.println(result1);
+//
+//        // 自定义数据测试
+//        Student[] students = {new Student("张三"),
+//                              new Student("李四"),
+//                              new Student("王五")};
+//
+//        Student zhangsan = new Student("王五");
+//        int search = LinearSearch.search(students, zhangsan);
+//        System.out.println(search);
 
-        // 查找到的情况
-        int result = LinearSearch.search(data, 16);
-        System.out.println(result);
-        
-        // 未查到的情况
-        int result1 = LinearSearch.search(data, 25);
-        System.out.println(result1);
+        // 测试性能
 
-        // 自定义数据测试
-        Student[] students = {new Student("张三"),
-                              new Student("李四"),
-                              new Student("王五")};
+        // 生成 数组
+        Integer[] arr = ArrayGenerator.generorterOrderedArray(10000000);
 
-        Student zhangsan = new Student("王五");
-        int search = LinearSearch.search(students, zhangsan);
-        System.out.println(search);
+        // 记录 开始时间
+        long startTime = System.nanoTime();
+
+        // 查找
+        LinearSearch.search(args, 10000000);
+        // 记录 结束时间
+        long endTime = System.nanoTime();
+        // 计算 用时
+        double time = (endTime - startTime) / 1000000000.0;
+        System.out.println(time + "s");
+
     }
 }
