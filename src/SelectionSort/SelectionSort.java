@@ -55,9 +55,6 @@ public class SelectionSort {
 
     public static void main(String[] args) {
         Integer[] arr = {1, 4, 2, 3, 6, 5};
-        SelectionSort.sort(arr);
-        for (int i : arr) {
-            System.out.print(i);
-        }
+        SortingHelper.sortTest("SelectionSort",arr);
     }
 }
