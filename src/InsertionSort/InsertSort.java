@@ -38,12 +38,31 @@ public class InsertSort {
 //            }
 
             // 简化代码
-            for (int j = i; j -1 > 0 &&  arr[j].compareTo(arr[j - 1]) < 0; j++) {
+            for (int j = i; j -1 >= 0 && arr[j].compareTo(arr[j - 1]) < 0; j--) {
                 swap(arr,j,j-1);
             }
         }
     }
 
+    /**
+     * 插入排序-优化
+     * @param arr 排序的数组
+     * @param <E> 泛型
+     */
+    public static <E extends Comparable<E>> void  sort2(E[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            // 将 arr[i] 插入到 合适的位置
+            E t = arr[i]; // 暂存 当前元素
+            int j;
+            for (j = i; j - 1 >= 0 && t.compareTo(arr[j - 1]) < 0; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[j] = t;
+        }
+    }
+    
+    
+    
     /**
      * 交换位置
      * @param arr 需要交换的数组
@@ -62,7 +81,9 @@ public class InsertSort {
         int[] data = {10000, 100000};
         for (int i = 0; i < data.length; i++) {
             Integer[] randomArray = ArrayGenerator.generateRandomArray(data[i], data[i]);
-            SortingHelper.sortTest(randomArray);
+            Integer[] randomArray2 = ArrayGenerator.generateRandomArray(data[i], data[i]);
+            SortingHelper.sortTest("InsertSort",randomArray);
+            SortingHelper.sortTest("InsertSort2",randomArray2);
         }
 
     }

@@ -1,5 +1,6 @@
 package SortUilts;
 
+import InsertionSort.InsertSort;
 import SelectionSort.SelectionSort;
 
 /**
@@ -37,13 +38,19 @@ public class SortingHelper {
 
     /**
      * 排序算法 测试方法
+     * @param sortName 排序类型
      * @param arr 数组
      * @param <E> 泛型
      */
-    public static <E extends Comparable<E>> void sortTest(E[] arr) {
+    public static <E extends Comparable<E>> void sortTest(String sortName,E[] arr) {
         // 性能测试
         long startTime = System.nanoTime();
-        SelectionSort.sort(arr);
+        if (sortName.equals("SelectionSort"))
+            SelectionSort.sort(arr);
+        else if (sortName.equals("InsertSort"))
+            InsertSort.sort(arr);
+        else if (sortName.equals("InsertSort2"))
+            InsertSort.sort2(arr);
         long endTime = System.nanoTime();
 
         double time = (endTime - startTime) / 1000000000.0;
