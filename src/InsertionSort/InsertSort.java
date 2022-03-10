@@ -28,13 +28,18 @@ public class InsertSort {
     public static <E extends Comparable<E>> void  sort(E[] arr) {
         for (int i = 0; i < arr.length; i++) {
             // 将 arr[i] 插入到 合适的位置
-            for (int j = i; j - 1 > 0; j--) {
-                // 判断 当前索引的 元素 是否 比前一个元素小，小就交换，否则处理下个元素
-                if (arr[j].compareTo(arr[j - 1]) < 0) {
-                    swap(arr, j, j - 1);
-                } else {
-                    break;
-                }
+//            for (int j = i; j - 1 > 0; j--) {
+//                // 判断 当前索引的 元素 是否 比前一个元素小，小就交换，否则处理下个元素
+//                if (arr[j].compareTo(arr[j - 1]) < 0) {
+//                    swap(arr, j, j - 1);
+//                } else {
+//                    break;
+//                }
+//            }
+
+            // 简化代码
+            for (int j = i; j -1 > 0 &&  arr[j].compareTo(arr[j - 1]) < 0; j++) {
+                swap(arr,j,j-1);
             }
         }
     }
