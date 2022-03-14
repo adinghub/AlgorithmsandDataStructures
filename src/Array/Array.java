@@ -7,9 +7,9 @@ package Array;
  * @since JDK 1.8
  */
 
-public class Array {
+public class Array<E> {
 
-    private int[] date;
+    private E[] data;
     private int size;
 
     /**
@@ -18,7 +18,7 @@ public class Array {
      * @param capacity 数组的容量
      */
     public Array(int capacity) {
-        date = new int[capacity];
+        data = (E[])new Object[capacity];
         size = 0;
     }
 
@@ -26,7 +26,7 @@ public class Array {
      * 无参构造，默认创建长度为 10  的 Array
      */
     public Array() {
-        date = new int[10];
+        data = (E[])new Object[10];
     }
 
     /**
@@ -44,7 +44,7 @@ public class Array {
      * @return 返回数组的长度
      */
     public int getCapactity() {
-        return date.length;
+        return data.length;
     }
 
     /**
@@ -61,7 +61,7 @@ public class Array {
      *
      * @param e 添加的元素
      */
-    public void addLast(int e) {
+    public void addLast(E e) {
         add(size,e);
     }
 
@@ -70,7 +70,7 @@ public class Array {
      *
      * @param e 添加的元素
      */
-    public void addFirst(int e) {
+    public void addFirst(E e) {
         add(0,e);
     }
 
@@ -79,8 +79,8 @@ public class Array {
      * @param index 数组的位置
      * @param e 新的元素
      */
-    public void add(int index, int e) {
-        if (size == date.length) {
+    public void add(int index,E e) {
+        if (size == data.length) {
             throw new IllegalArgumentException("add() 方法执行失败，当前数组已满");
         }
         if (index < 0 || index > size) {
@@ -88,9 +88,9 @@ public class Array {
         }
 
         for (int i = size-1; i >= index; i--) {
-            date[i + 1] = date[i];
+            data[i + 1] = data[i];
         }
-        date[index] = e;
+        data[index] = e;
         size++;
     }
 
@@ -99,11 +99,11 @@ public class Array {
      * @param index 位置
      * @return index 位置的元素
      */
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("getIndex() 方法执行失败,index 不能小于0 或者 大于数组的长度");
         }
-        return date[index];
+        return data[index];
     }
 
     /**
@@ -111,9 +111,9 @@ public class Array {
      * @param e 查找的元素
      * @return
      */
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (date[i] == e) {
+            if (data[i].equals(e)) {
                 return true;
             }
         }
@@ -125,9 +125,9 @@ public class Array {
      * @param e  元素
      * @return 查找到返回 索引值，未查到返回 -1
      */
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (date[i] == e) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -139,15 +139,16 @@ public class Array {
      * @param index 位置
      * @return 返回删除的元素
      */
-    public int remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("remove() 方法执行失败,index 不能小于0 或者 大于数组的长度");
         }
-        int ret = date[index];
+        E ret = data[index];
         for (int i = index + 1; i < size; i++) {
-            date[i - 1] = date[i];
+            data[i - 1] = data[i];
         }
         size--;
+        data[size] = null;
         return ret;
     }
 
@@ -155,7 +156,7 @@ public class Array {
      * 从数组中删除第一个元素
      * @return 返回删除
      */
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -163,7 +164,7 @@ public class Array {
      * 从数组中删除最后一个元素
      * @return
      */
-    public int removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -171,7 +172,7 @@ public class Array {
      * 从数组中删除一个元素
      * @param e 需要删除的元素
      */
-    public void removeElement(int e) {
+    public void removeElement(E e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
@@ -184,11 +185,11 @@ public class Array {
      * @param e 新元素
      * @return index 位置的元素
      */
-    public int set(int index,int e) {
+    public E set(int index,E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("getIndex() 方法执行失败,index 不能小于0 或者 大于数组的长度");
         }
-        return date[index] = e;
+        return data[index] = e;
     }
 
 
@@ -196,10 +197,10 @@ public class Array {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append(String.format("Array：size = %d, capacity = %d\n", size, date.length));
+        res.append(String.format("Array：size = %d, capacity = %d\n", size, data.length));
         res.append("[");
         for (int i = 0; i < size; i++) {
-            res.append(date[i]);
+            res.append(data[i]);
             if (i != size) {
                 res.append(",");
             }
