@@ -80,11 +80,12 @@ public class Array<E> {
      * @param e 新的元素
      */
     public void add(int index,E e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("add() 方法执行失败，当前数组已满");
-        }
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("add() 方法执行失败,index 不能小于0 或者 大于数组的长度");
+        }
+
+        if (size == data.length) {
+            resize(2 * data.length);
         }
 
         for (int i = size-1; i >= index; i--) {
@@ -207,5 +208,13 @@ public class Array<E> {
         }
         res.append("]");
         return res.toString();
+    }
+
+    private void resize(int newCapacity) {
+        E[] newData = (E[])new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 }
