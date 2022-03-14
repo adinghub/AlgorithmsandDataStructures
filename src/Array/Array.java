@@ -136,6 +136,22 @@ public class Array<E> {
     }
 
     /**
+     * 获取第一个元素
+     * @return 返回第一个元素
+     */
+    public E getFirst() {
+        return get(0);
+    }
+
+    /**
+     * 获取最后一个元素
+     * @return 返回最后一个元素
+     */
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    /**
      * 从数组中删除index 位置的元素
      * @param index 位置
      * @return 返回删除的元素
