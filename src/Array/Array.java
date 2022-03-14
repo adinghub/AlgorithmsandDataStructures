@@ -107,6 +107,78 @@ public class Array {
     }
 
     /**
+     * 查找数组中是否存在 e
+     * @param e 查找的元素
+     * @return
+     */
+    public boolean contains(int e) {
+        for (int i = 0; i < size; i++) {
+            if (date[i] == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 查找数组中元素 e 的索引
+     * @param e  元素
+     * @return 查找到返回 索引值，未查到返回 -1
+     */
+    public int find(int e) {
+        for (int i = 0; i < size; i++) {
+            if (date[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 从数组中删除index 位置的元素
+     * @param index 位置
+     * @return 返回删除的元素
+     */
+    public int remove(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("remove() 方法执行失败,index 不能小于0 或者 大于数组的长度");
+        }
+        int ret = date[index];
+        for (int i = index + 1; i < size; i++) {
+            date[i - 1] = date[i];
+        }
+        size--;
+        return ret;
+    }
+
+    /**
+     * 从数组中删除第一个元素
+     * @return 返回删除
+     */
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 从数组中删除最后一个元素
+     * @return
+     */
+    public int removeLast() {
+        return remove(size - 1);
+    }
+
+    /**
+     * 从数组中删除一个元素
+     * @param e 需要删除的元素
+     */
+    public void removeElement(int e) {
+        int index = find(e);
+        if (index != -1) {
+            remove(index);
+        }
+    }
+
+    /**
      * 将数组中 Index 位置的元素更新为 e
      * @param index 位置
      * @param e 新元素

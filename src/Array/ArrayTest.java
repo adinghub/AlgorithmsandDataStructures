@@ -27,5 +27,10 @@ public class ArrayTest {
         array.set(9, 88);
         System.out.println(array);
 
+        array.remove(2);
+        System.out.println(array);
+
+        array.removeElement(4);
+        System.out.println(array);
     }
 }
