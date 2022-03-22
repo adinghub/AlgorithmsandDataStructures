@@ -10,7 +10,7 @@ import Stack.ArrayStack;
  * @since JDK 1.8
  */
 
-public class Solution {
+public class 有效的括号 {
     public boolean isValid(String s) {
         ArrayStack<Character> stack = new ArrayStack<Character>();
         for (int i = 0; i < s.length(); i++) {
@@ -35,7 +35,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        有效的括号 solution = new 有效的括号();
         System.out.println(solution.isValid("()"));
     }
 }
