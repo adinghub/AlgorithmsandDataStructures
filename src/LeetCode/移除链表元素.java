@@ -42,6 +42,21 @@ public class 移除链表元素 {
         }
         return head;
     }
+
+    public ListNode removeElements2(ListNode head, int val) {
+        ListNode dummyHead = new ListNode();
+        dummyHead.next = head;
+
+        ListNode preNode = dummyHead;
+        while (preNode.next != null) {
+            if (preNode.next.val == val) {
+                preNode.next = preNode.next.next;
+            }else {
+                preNode = preNode.next;
+            }
+        }
+        return dummyHead.next;
+    }
 }
 
 class ListNode {
