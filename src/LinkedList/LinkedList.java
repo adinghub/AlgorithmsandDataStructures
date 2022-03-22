@@ -116,7 +116,7 @@ public class LinkedList<E> {
     /**
      * 获得链表的第一个元素
      */
-    public E getFirst(int index) {
+    public E getFirst() {
         return get(0);
     }
 
