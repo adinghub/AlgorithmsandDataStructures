@@ -21,11 +21,21 @@ public class 反转链表 {
         return pre;
     }
 
+    public ListNode recursion(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode rev = recursion(head.next);
+        head.next.next = head;
+        head.next = null;
+        return rev;
+    }
+
 
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5};
         ListNode head = new ListNode(arr);
         反转链表 reverseList = new 反转链表();
-        System.out.println(reverseList.reverseList(head));
+        System.out.println(reverseList.recursion(head));
     }
 }
