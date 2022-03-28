@@ -42,6 +42,8 @@ public class MergeSort {
      * @param mid 中间位
      * @param r 右边起始位
      * @param <E> 泛型
+     *
+     * 因为temp是从arr截取的从第l到r位的数组，i和j是arr中第i和第j个数，对应到temp中就是第i-l和第j-l的数
      */
     private static <E extends Comparable<E>> void merge(E[] arr, int l, int mid, int r) {
         // 备份数组作为临时数组
